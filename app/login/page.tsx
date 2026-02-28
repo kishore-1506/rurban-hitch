@@ -78,8 +78,9 @@ const handleForgotPassword = async () => {
           />
 
           <button
+          type="button"
   onClick={handleGoogleLogin}
-  className="w-full flex items-center justify-center border p-3 rounded-lg hover:bg-gray-100 transition"
+  className="w-full flex items-center justify-center border p-3 rounded-lg hover:bg-gray-100 transition  bg-white text-gray-900 placeholder-gray-500"
 >
   <img
     src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
