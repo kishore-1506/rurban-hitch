@@ -59,7 +59,7 @@ export default function BookingHistoryPage() {
           {bookings.map((booking) => (
             <div
               key={booking.id}
-              className="bg-white p-6 rounded-2xl shadow-md"
+              className="bg-white p-6 rounded-2xl shadow-md bg-white text-gray-900 placeholder-gray-500"
             >
               <p><strong>Ticket Ref:</strong> {booking.ticketRef}</p>
               <p><strong>Bus ID:</strong> {booking.busId}</p>

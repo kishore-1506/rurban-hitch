@@ -75,7 +75,7 @@ export default function SignupPage() {
           <input
             type="text"
             placeholder="Full Name"bg-white text-gray-900 placeholder-gray-500
-            className="w-full p-3 border rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full p-3 border rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-900 placeholder-gray-500"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -101,7 +101,7 @@ export default function SignupPage() {
 
           <button
   onClick={handleGoogleSignup}
-  className="w-full flex items-center justify-center border p-3 rounded-lg hover:bg-gray-100 transition"
+  className="w-full flex items-center justify-center border p-3 rounded-lg hover:bg-gray-100 transition bg-white text-gray-900 placeholder-gray-500"
 >
   <img
     src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
