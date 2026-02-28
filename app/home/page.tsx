@@ -44,12 +44,25 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 gap-6">
             <input
-              type="text"
-              placeholder="Boarding Point"
-              className="p-3 border rounded-lg bg-white text-gray-900"
-              value={boarding}
-              onChange={(e) => setBoarding(e.target.value)}
-            />
+  type="text"
+  placeholder="Boarding Point"
+  className="p-3 border rounded-lg bg-white text-gray-900"
+  value={boarding}
+  onChange={(e) => {
+    const value = e.target.value;
+    setBoarding(value);
+
+    if (value !== "") {
+      const now = new Date();
+
+      const currentDate = now.toISOString().split("T")[0];
+      const currentTime = now.toTimeString().slice(0, 5);
+
+      setDate(currentDate);
+      setTime(currentTime);
+    }
+  }}
+/>
 
             <input
               type="text"

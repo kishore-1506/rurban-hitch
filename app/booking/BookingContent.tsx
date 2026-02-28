@@ -1,12 +1,15 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import { auth, db } from "../../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
 
-export default function BookingContent() {
 
+export default function BookingContent() {
+  
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
+const [processing, setProcessing] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
   useEffect(() => {
@@ -62,9 +65,9 @@ const type = searchParams.get("type");
         Booking & Payment
       </h1>
 
-      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-2xl mx-auto space-y-6">
+      <div className="bg-white p-8 rounded-2xl shadow-lg max-w-2xl mx-auto space-y-6 bg-white text-gray-900 placeholder-gray-500">
 
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-semibold text-gray-800 ">
           Journey Summary
         </h2>
 
@@ -77,26 +80,45 @@ const type = searchParams.get("type");
           Select Payment Method
         </h3>
 
-        <div className="space-y-3">
-          <button className="w-full border p-3 rounded-lg hover:bg-gray-100">
-            UPI
-          </button>
+       <div className="space-y-3 bg-white text-gray-900 placeholder-gray-500" >
 
-          <button className="w-full border p-3 rounded-lg hover:bg-gray-100">
-            Debit Card
-          </button>
+  {["UPI", "Debit Card", "Credit Card"].map((method) => (
+    <button
+      key={method}
+      type="button"
+      onClick={() => setSelectedMethod(method)}
+      className={`w-full border p-3 rounded-lg transition  ${
+        selectedMethod === method
+          ? "bg-green-100 border-green-500 "
+          : "hover:bg-gray-100"
+      }`}
+    >
+      {method}
+    </button>
+  ))}
 
-          <button className="w-full border p-3 rounded-lg hover:bg-gray-100">
-            Credit Card
-          </button>
-        </div>
+</div>
 
         <button
-          onClick={handlePayment}
-          className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition"
-        >
-          Pay Now
-        </button>
+  onClick={async () => {
+    if (!selectedMethod) {
+      alert("Please select a payment method");
+      return;
+    }
+
+    setProcessing(true);
+
+    setTimeout(async () => {
+      await handlePayment();
+    }, 2000);
+  }}
+  disabled={processing}
+  className={`w-full p-3 rounded-lg transition text-white  ${
+    processing ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
+  }`}
+>
+  {processing ? "Processing Payment..." : "Pay Now"}
+</button>
 
       </div>
 
