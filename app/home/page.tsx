@@ -28,7 +28,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100 flex-col md : flex row">
 
       {/* Sidebar Component */}
       <Sidebar />
@@ -40,9 +40,9 @@ export default function HomePage() {
           Search Your Bus
         </h1>
 
-        <div className="bg-white p-8 rounded-2xl shadow-lg space-y-6">
+        <div className="w-full md:w-64 bg-blue-900 text-white p-6 space-y-6 ">
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
   type="text"
   placeholder="Boarding Point"

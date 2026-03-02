@@ -30,7 +30,7 @@ export default function TrackPage() {
         🛰️ Live Bus Tracking
       </h1>
 
-      <div className="h-[500px] rounded-xl overflow-hidden shadow-lg">
+      <div className="h-[60vh] md:h-[500px] rounded-xl overflow-hidden shadow-lg">
         <MapComponent position={position} />
       </div>
 
