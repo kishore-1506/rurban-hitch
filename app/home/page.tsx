@@ -73,7 +73,7 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <input
               type="date"
               className="p-3 border rounded-lg bg-white text-gray-900"
